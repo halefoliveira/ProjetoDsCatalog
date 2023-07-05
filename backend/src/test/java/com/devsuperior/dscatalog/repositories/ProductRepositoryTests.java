@@ -57,4 +57,18 @@ public class ProductRepositoryTests {
 		Assertions.assertNotNull(product.getId());
 		Assertions.assertEquals(countTotalPoducts + 1, product.getId());
 	}
+	
+	@Test
+	public void returnShoudIdexists() {
+		
+		Optional<Product> respostId = repository.findById(exintingId);
+		Assertions.assertTrue(respostId.isPresent());
+	}
+	
+	@Test
+	public void returnShoudIdNoexists() {
+		
+		Optional<Product> respostId = repository.findById(nonExistingId);
+		Assertions.assertTrue(respostId.isEmpty());
+	}
 }

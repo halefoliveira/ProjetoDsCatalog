@@ -27,7 +27,7 @@ public class ProductResource {
 	private ProductService service;
 
 	@GetMapping
-	public ResponseEntity<Page<ProductDTO>> findAl(Pageable pageable) {
+	public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable) {
 		Page<ProductDTO> list = service.findAllPaged(pageable);
 				
 		return ResponseEntity.ok().body(list);
@@ -47,7 +47,7 @@ public class ProductResource {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ProductDTO> insert(@PathVariable Long id, @RequestBody ProductDTO dto) {
+	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody ProductDTO dto) {
 		dto = service.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}
